@@ -1,0 +1,9 @@
+event	audio_file	audio_begin	transcript_begin	audio_end	transcript_end
+20170512_Trump_NBC_holt_interview	audio-1.wav	0	1	781	246
+20170803_Trump_WV	audio-1.wav	0	57	2273	291
+20170822_Trump_phoenix	audio-1.wav	2	2	4547	792
+20180426_Trump_Fox_Friends	audio-1.wav	7	1	1782	597
+20180525_Trump_Naval	audio-1.wav	23	3	2102	279
+20180612_Trump_Singapore	audio-1.wav	1	1	3924	1244
+20180615_Trump_lawn	audio-1.wav	0	1	1824	813
+20180628_Trump_NorthDakota	audio-1.wav	108	2	4324	1036
