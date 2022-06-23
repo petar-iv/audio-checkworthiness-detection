@@ -30,7 +30,7 @@ pip install -r requirements.txt
 4. Export the project root as environment variable:
 
 ```sh
-export PROJECT_ROOT=/<...>/checkworthy-research/using-audio-for-detecting-checkworthy-sentences
+export PROJECT_ROOT=/<...>/checkworthy-research/audio-checkworthiness-detection
 ```
 
 5. `cd` into `scripts` directory
