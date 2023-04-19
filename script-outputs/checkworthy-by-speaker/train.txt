@@ -1,0 +1,36 @@
+df.groupby(['speaker']).size().sort_values()
+
+BAIER                          1
+Reporter                       1
+QUICK                          1
+PAUL                           1
+LAUER                          1
+HILLARY CLINTON                1
+GEORGE CLOONEY                 1
+KASICH                         1
+COOPER                         1
+Bill O'Reilly                  1
+CHRISTIE                       1
+WALLACE                        2
+Sheri Dillon                   2
+SEN. BERNIE SANDERS, I-VT      2
+QUINTANILLA                    2
+David Muir                     3
+MR. ROMNEY                     4
+DONALD TRUMP                   4
+FIORINA                        4
+CARSON                         4
+BUSH                           5
+Obama                          6
+PRESIDENT OBAMA                6
+SEN. BERNIE SANDERS            6
+RUBIO                          8
+PENCE                         14
+KAINE                         16
+CRUZ                          20
+SANDERS                       20
+Donald Trump                  66
+CLINTON                       69
+TRUMP                        143
+
+Trump -> 213/417 => 51%

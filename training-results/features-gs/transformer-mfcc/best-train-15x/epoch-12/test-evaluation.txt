@@ -1,0 +1,4 @@
+Mean Average Precision: 0.1931
+Mean Reciprocal Rank: 0.4868
+Mean R-Precision: 0.1969
+Overall Precisions: ['0.3750', '0.2083', '0.1750', '0.2125', '0.1812', '0.2075']

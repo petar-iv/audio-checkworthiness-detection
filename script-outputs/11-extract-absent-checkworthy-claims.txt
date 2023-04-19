@@ -1,0 +1,87 @@
+Processing train
+Checkworthy in full - 429
+Checkworthy in reduced - 417
+Absent in reduced - 12
+     line_number          speaker  ... is_claim                       event_name
+34           276           SYSTEM  ...        1           20151110_GOP_Milwaukee
+91           238           SYSTEM  ...        1            20160303_GOP_Michigan
+105           29           KASICH  ...        1        20160329_Kasich_Milwaukee
+106          259           KASICH  ...        1        20160329_Kasich_Milwaukee
+107          100             CRUZ  ...        1          20160331_Cruz_Milwaukee
+108          173             CRUZ  ...        1          20160331_Cruz_Milwaukee
+111          653            TRUMP  ...        1         20160401_Trump_Milwaukee
+112          812           COOPER  ...        1         20160401_Trump_Milwaukee
+113          153  HILLARY CLINTON  ...        1  20160404_Hillary_meet_the_press
+419          201           SYSTEM  ...        1              20170224_Trump_CPAC
+421          222           SYSTEM  ...        1              20170224_Trump_CPAC
+427          338           SYSTEM  ...        1              20170224_Trump_CPAC
+
+[12 rows x 5 columns]
+
+
+
+
+
+
+Processing dev
+Checkworthy in full - 69
+Checkworthy in reduced - 40
+Absent in reduced - 29
+    line_number  ...                             event_name
+2            78  ...  20170228_Trump_Congress_joint_session
+4            80  ...  20170228_Trump_Congress_joint_session
+7            87  ...  20170228_Trump_Congress_joint_session
+12          203  ...  20170228_Trump_Congress_joint_session
+15          214  ...  20170228_Trump_Congress_joint_session
+17          216  ...  20170228_Trump_Congress_joint_session
+19          319  ...  20170228_Trump_Congress_joint_session
+21          321  ...  20170228_Trump_Congress_joint_session
+24          350  ...  20170228_Trump_Congress_joint_session
+26          352  ...  20170228_Trump_Congress_joint_session
+29           91  ...               20170315_Trump_Nashville
+31           93  ...               20170315_Trump_Nashville
+35           18  ...         20170323_Trump_Times_Interview
+36           19  ...         20170323_Trump_Times_Interview
+37           20  ...         20170323_Trump_Times_Interview
+38           21  ...         20170323_Trump_Times_Interview
+39           22  ...         20170323_Trump_Times_Interview
+40           23  ...         20170323_Trump_Times_Interview
+41           24  ...         20170323_Trump_Times_Interview
+42           67  ...         20170323_Trump_Times_Interview
+43           75  ...         20170323_Trump_Times_Interview
+44           77  ...         20170323_Trump_Times_Interview
+45          149  ...         20170323_Trump_Times_Interview
+46          185  ...         20170323_Trump_Times_Interview
+47          270  ...         20170323_Trump_Times_Interview
+55           70  ...            20170424_Trump_AP_interview
+56          387  ...            20170424_Trump_AP_interview
+57          412  ...            20170424_Trump_AP_interview
+58          535  ...            20170424_Trump_AP_interview
+
+[29 rows x 5 columns]
+
+
+
+
+
+
+Processing test
+Checkworthy in full - 298
+Checkworthy in reduced - 291
+Absent in reduced - 7
+    line_number       speaker  ... is_claim         event_name
+14           16  Donald Trump  ...        1  20170803_Trump_WV
+15           17  Donald Trump  ...        1  20170803_Trump_WV
+16           18  Donald Trump  ...        1  20170803_Trump_WV
+17           19  Donald Trump  ...        1  20170803_Trump_WV
+18           22  Donald Trump  ...        1  20170803_Trump_WV
+19           35  Donald Trump  ...        1  20170803_Trump_WV
+20           38  Donald Trump  ...        1  20170803_Trump_WV
+
+[7 rows x 5 columns]
+
+
+
+
+
+

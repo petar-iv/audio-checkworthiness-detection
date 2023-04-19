@@ -1,0 +1,20 @@
+> extracting named entities started at 2022-09-25 19:58:24.543383
+{'CARDINAL': 0,
+ 'DATE': 1,
+ 'EVENT': 2,
+ 'FAC': 3,
+ 'GPE': 4,
+ 'LANGUAGE': 5,
+ 'LAW': 6,
+ 'LOC': 7,
+ 'MONEY': 8,
+ 'NORP': 9,
+ 'ORDINAL': 10,
+ 'ORG': 11,
+ 'PERCENT': 12,
+ 'PERSON': 13,
+ 'PRODUCT': 14,
+ 'QUANTITY': 15,
+ 'TIME': 16,
+ 'WORK_OF_ART': 17}
+> (0:04:12.189589) extracting named entities completed at 2022-09-25 20:02:36.732998

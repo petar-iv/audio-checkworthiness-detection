@@ -1,0 +1,42 @@
+> running baselines started at 2022-09-05 18:25:32.327164
+> random baseline started at 2022-09-05 18:25:33.024485
+
+--- Dataset: dev
+Mean Average Precision: 0.0305
+Mean Reciprocal Rank: 0.0372
+Mean R-Precision: 0.0079
+Overall Precisions: ['0.0000', '0.0000', '0.0000', '0.0000', '0.0143', '0.0257']
+
+
+
+
+--- Dataset: test
+Mean Average Precision: 0.0980
+Mean Reciprocal Rank: 0.2298
+Mean R-Precision: 0.0895
+Overall Precisions: ['0.1250', '0.0417', '0.0750', '0.1125', '0.1063', '0.0800']
+
+
+
+> (0:00:00.263493) random baseline completed at 2022-09-05 18:25:33.288009
+> ngram baseline started at 2022-09-05 18:25:33.288017
+
+--- Dataset: dev
+Mean Average Precision: 0.0952
+Mean Reciprocal Rank: 0.2696
+Mean R-Precision: 0.0807
+Overall Precisions: ['0.1429', '0.0952', '0.0571', '0.0714', '0.0429', '0.0429']
+
+
+
+
+--- Dataset: test
+Mean Average Precision: 0.2152
+Mean Reciprocal Rank: 0.6667
+Mean R-Precision: 0.2056
+Overall Precisions: ['0.5000', '0.3750', '0.4000', '0.3250', '0.2500', '0.1900']
+
+
+
+> (0:00:05.190872) ngram baseline completed at 2022-09-05 18:25:38.478911
+> (0:00:06.157919) running baselines completed at 2022-09-05 18:25:38.485114

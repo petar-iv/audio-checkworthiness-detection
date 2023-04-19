@@ -1,11 +1,8 @@
-import os
-import json
-import random
+import glob
+import shutil
 import argparse
 import operator
-from typing import Any
 from pathlib import Path
-from shutil import rmtree
 from operator import itemgetter
 
 import torch
@@ -13,65 +10,86 @@ import numpy as np
 import torch.nn as nn
 from tqdm.auto import tqdm
 from torch.utils.data import DataLoader
-from transformers import AutoConfig, AutoTokenizer, AutoModelForSequenceClassification, \
-  AutoFeatureExtractor, AutoModelForAudioClassification, \
-  get_linear_schedule_with_warmup
+from transformers import get_scheduler, AutoConfig, \
+  AutoTokenizer, AutoModelForSequenceClassification, \
+  AutoFeatureExtractor, AutoModelForAudioClassification
 
-from evaluate import evaluate
-from datasets import TextDataset, AudioDataset
-from utils import measure_time, reduced_dataset_dir
-
+from datasets import SequenceDataset, VectorsDataset, TextDataset, AudioDataset
+from custom_models import RNNModel, TransformerModel, FeedforwardNetwork
+from utils import measure_time, print_device_information, \
+  prepare_output_dir, create_args_file, set_seed, \
+  build_dataframe_for_reduced_dataset, get_device, \
+  save_info, save_losses, move_tensors_to_device, \
+  count_parameters, evaluate_model, save_evaluation, \
+  build_dataframe_for_full_dataset
 
 NON_INPUT_FIELDS = ['file_identifier', 'line_number', 'is_claim']
-class CustomJSONEncoder(json.JSONEncoder):
-  def default(self, obj: Any) -> Any:
-    if isinstance(obj, np.integer):
-      return int(obj)
-    elif isinstance(obj, np.floating):
-      return float(obj)
-    elif isinstance(obj, np.ndarray):
-      return obj.tolist()
-    elif isinstance(obj, Path):
-      return str(obj)
-    else:
-      return super(CustomJSONEncoder, self).default(obj)
+
 
 def train():
   args = process_command_line_args()
-  model, datasets, optimizer_artefacts = prepare(args)
-  model.to(get_device())
+  print_device_information()
+  prepare_output_dir(args)
+  create_args_file(args)
+  set_seed(args.seed)
 
-  epoch_to_dev_map_score, epoch_to_test_map_score, losses = train_all_epochs(args, model, datasets, optimizer_artefacts)
-  save_map_scores(epoch_to_dev_map_score, args.output_dir / 'dev-maps')
-  save_map_scores(epoch_to_test_map_score, args.output_dir / 'test-maps')
+  datasets = create_datasets(args)
+  model = create_model(args, datasets)
+  model.to(get_device())
+  optimizer_artefacts = create_optimizer_artefacts(args, model, datasets['train'])
+
+  epoch_to_dev_map_score, losses = train_all_epochs(args, model, datasets, optimizer_artefacts)
+  best_epoch = get_best_performing_epoch(epoch_to_dev_map_score)
+  print(f'Evaluating model epoch {best_epoch} over test')
+  test_map_score = evaluate_on_test(args, best_epoch, datasets['test'])
+
+  params_count = count_parameters(model)
+  save_info(params_count, epoch_to_dev_map_score, best_epoch, test_map_score, args.output_dir / 'result.txt')
   save_losses(losses, args.output_dir)
+  delete_all_epoch_dirs_but(best_epoch, args.output_dir)
 
 def process_command_line_args():
   parser = argparse.ArgumentParser()
-
-  # Model
-  parser.add_argument('--model_type', type=str, choices=['text', 'audio'])
-  parser.add_argument('--model_name', type=str, required=True)
 
   # Output directory
   parser.add_argument('--output_dir', type=Path, required=True)
   parser.add_argument('--overwrite_output_dir', action='store_true')
 
   # Data
-  parser.add_argument('--data_dir', type=Path, required=True)
-  parser.add_argument('--sentence_level_alignment_dir_name', type=Path, required=True)
-  parser.add_argument('--audio_segments_dir_name', type=Path)
-  parser.add_argument('--max_seq_length', type=int, required=True)
+  parser.add_argument('--train_data_path', type=Path, required=True)
+  parser.add_argument('--dev_data_path', type=Path, required=True)
+  parser.add_argument('--test_data_path', type=Path, required=True)
+  parser.add_argument('--dataset_type', type=str, choices=['full', 'reduced'], default='reduced')
+  parser.add_argument('--data_type', type=str, required=True, choices=['sequence-features', 'features', 'text', 'audio'])
+  parser.add_argument('--df_columns', type=str, nargs='+')
+  parser.add_argument('--scalers_dir', type=Path)
+  parser.add_argument('--max_sequence_length', type=int)
+
+  # Model
+  parser.add_argument('--model_type', type=str, choices=['custom', 'huggingface'], required=True)
+  parser.add_argument('--model_name', type=str, required=True) # predefined: rnn, transformer-encoder, feedforward
+  parser.add_argument('--dropout', type=float, default=0.2)
+  ## RNN
+  parser.add_argument('--rnn_num_layers', type=int)
+  parser.add_argument('--rnn_num_directions', type=int)
+  parser.add_argument('--rnn_hidden_size', type=int)
+  ## Transformer Encoder
+  parser.add_argument('--transformer_num_heads', type=int)
+  parser.add_argument('--transformer_num_layers', type=int)
+  parser.add_argument('--transformer_activation', type=str, choices=['relu', 'gelu'], default='gelu')
+  ## Feedforward
+  parser.add_argument('--ff_hidden_sizes', type=int, nargs='*')
 
   # Training
-  parser.add_argument('--num_train_epochs', type=int, default=10)
+  parser.add_argument('--num_train_epochs', type=int, default=15)
   parser.add_argument('--learning_rate', type=float, required=True)
+  parser.add_argument('--learning_rate_scheduler', type=str, choices=['linear', 'cosine', 'cosine_with_restarts', 'polynomial', 'constant', 'constant_with_warmup'], default='linear')
   parser.add_argument('--warmup_proportion', type=float, default=0.1) # learning rate scheduling
   parser.add_argument('--train_batch_size', type=int, default=15)
   parser.add_argument('--eval_batch_size', type=int, default=15)
   parser.add_argument('--mixed_precision', action='store_true') # fp16 support
   parser.add_argument('--max_grad_norm', type=float, default=1.0)
-  # Optimizer
+  ## Optimizer
   parser.add_argument('--optimizer_betas', type=float, default=[0.9, 0.999], nargs='+')
   parser.add_argument('--epsilon', type=float, default=1e-8)
   parser.add_argument('--weight_decay', type=float, default=0.01)
@@ -81,85 +99,119 @@ def process_command_line_args():
 
   return parser.parse_args()
 
-def prepare(args):
-  print_device_information()
-  prepare_output_dir(args)
-  create_args_file(args)
-  set_seed(args.seed)
+def create_datasets(args):
+  train_df, dev_df, test_df = load_dataframes(args)
 
-  model_artefacts = create_model_artefacts(args)
-  datasets = create_datasets(args, model_artefacts)
-  optimizer_artefacts = create_optimizer_artefacts(args, model_artefacts['model'], datasets['train'])
+  if args.data_type == 'sequence-features':
+    column_info = {
+      'name': args.df_columns[0],
+      'scaler': torch.load(args.scalers_dir / f'{args.df_columns[0]}.bin') if args.scalers_dir else None
+    }
+    should_return_attention = args.model_name == 'transformer-encoder'
 
-  return model_artefacts['model'], datasets, optimizer_artefacts
-
-def print_device_information():
-  if torch.cuda.is_available():
-    print('CUDA is available')
-    print(f'Device count: {torch.cuda.device_count()}')
-    device = torch.cuda.current_device()
-    print(f'Device name: {torch.cuda.get_device_name(device)}')
-    print(f'Device properties: {torch.cuda.get_device_properties(device)}')
-  else:
-    print('CPU is available')
-    print(f'Number of threads: {torch.get_num_threads()}')
-
-def prepare_output_dir(args):
-  if args.output_dir.exists() and os.listdir(args.output_dir):
-    if not args.overwrite_output_dir:
-      raise ValueError(f'Output directory ({args.output_dir}) already exists and is not empty. Use --overwrite_output_dir to overwrite it.')
-    else:
-      print(f'Overwriting the output directory {args.output_dir}')
-      rmtree(args.output_dir)
-
-  args.output_dir.mkdir(parents=True, exist_ok=True)
-
-def create_args_file(args):
-  with (args.output_dir / 'args.json').open('w') as f:
-    json.dump(vars(args), f, cls=CustomJSONEncoder, indent=2)
-
-def set_seed(seed):
-  random.seed(seed)
-  np.random.seed(seed)
-  torch.manual_seed(seed)
-  torch.cuda.manual_seed_all(seed)
-
-def create_model_artefacts(args):
-  config = AutoConfig.from_pretrained(args.model_name, num_labels=2)
-
-  if args.model_type == 'text':
     return {
-      'tokenizer': AutoTokenizer.from_pretrained(args.model_name, config=config),
-      'model': AutoModelForSequenceClassification.from_pretrained(args.model_name, config=config)
+      'train': SequenceDataset(train_df, args.max_sequence_length, column_info, should_return_attention),
+      'dev': SequenceDataset(dev_df, args.max_sequence_length, column_info, should_return_attention),
+      'test': SequenceDataset(test_df, args.max_sequence_length, column_info, should_return_attention)
     }
 
-  # audio
-  return {
-    'feature_extractor': AutoFeatureExtractor.from_pretrained(args.model_name, config=config),
-    'model': AutoModelForAudioClassification.from_pretrained(args.model_name, config=config)
-  }
+  if args.data_type == 'features':
+    column_infos = build_columns_info(args.df_columns, args.scalers_dir)
 
-def create_datasets(args, model_artefacts):
-  root_dir = reduced_dataset_dir(args.data_dir, 'v1') / args.sentence_level_alignment_dir_name
-  if args.model_type == 'text':
     return {
-      'train': TextDataset(root_dir / 'train', model_artefacts['tokenizer'], args.max_seq_length),
-      'dev': TextDataset(root_dir / 'dev', model_artefacts['tokenizer'], args.max_seq_length),
-      'test': TextDataset(root_dir / 'test', model_artefacts['tokenizer'], args.max_seq_length)
+      'train': VectorsDataset(train_df, column_infos),
+      'dev': VectorsDataset(dev_df, column_infos),
+      'test': VectorsDataset(test_df, column_infos)
     }
 
+  if args.data_type == 'text':
+    config = AutoConfig.from_pretrained(args.model_name, num_labels=2)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name, config=config)
 
-  if not args.audio_segments_dir_name:
-    raise Exception(f'--audio_segments_dir_name must be provided when training on audio')
+    if not args.max_sequence_length:
+      raise Exception(f'max_sequence_length must be provided for text classification')
 
-  root_audio_segments_dir = reduced_dataset_dir(args.data_dir, 'v1') / args.audio_segments_dir_name
+    return {
+      'train': TextDataset(train_df, tokenizer, args.max_sequence_length),
+      'dev': TextDataset(dev_df, tokenizer, args.max_sequence_length),
+      'test': TextDataset(test_df, tokenizer, args.max_sequence_length)
+    }
 
-  # audio
-  return {
-    'train': AudioDataset(root_dir / 'train', root_audio_segments_dir / 'train', model_artefacts['feature_extractor'], args.max_seq_length),
-    'dev': AudioDataset(root_dir / 'dev', root_audio_segments_dir / 'dev', model_artefacts['feature_extractor'], args.max_seq_length),
-    'test': AudioDataset(root_dir / 'test', root_audio_segments_dir / 'test', model_artefacts['feature_extractor'], args.max_seq_length)
-  }
+  if args.data_type == 'audio':
+    config = AutoConfig.from_pretrained(args.model_name, num_labels=2)
+    # See https://huggingface.co/docs/transformers/master/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor.return_attention_mask
+    should_return_attention = False if hasattr(config, 'feat_extract_norm') and config.feat_extract_norm == 'group' else True
+
+    feature_extractor = AutoFeatureExtractor.from_pretrained(args.model_name,
+            sampling_rate=16000, do_normalize=True,
+            return_attention_mask=should_return_attention, config=config)
+
+    return {
+      'train': AudioDataset(train_df, args.df_columns[0], feature_extractor, args.max_sequence_length),
+      'dev': AudioDataset(dev_df, args.df_columns[0], feature_extractor, args.max_sequence_length),
+      'test': AudioDataset(test_df, args.df_columns[0], feature_extractor, args.max_sequence_length)
+    }
+
+  raise Exception(f'Could not handle data_type "{args.data_type}" while creating datasets')
+
+def load_dataframes(args):
+  if args.dataset_type == 'full':
+    train_df = build_dataframe_for_full_dataset(args.train_data_path)
+    dev_df = build_dataframe_for_full_dataset(args.dev_data_path)
+    test_df = build_dataframe_for_full_dataset(args.test_data_path)
+    return train_df, dev_df, test_df
+
+  if args.dataset_type == 'reduced':
+    train_df = build_dataframe_for_reduced_dataset(args.train_data_path)
+    dev_df = build_dataframe_for_reduced_dataset(args.dev_data_path)
+    test_df = build_dataframe_for_reduced_dataset(args.test_data_path)
+    return train_df, dev_df, test_df
+
+  raise Exception(f'Could not handle dataset_type "{args.dataset_type}" while loading dataframes')
+
+def build_columns_info(df_columns, scalers_dir):
+  if not df_columns:
+    raise Exception('df_columns should be provided')
+
+  pairs = []
+  for df_column in df_columns:
+    pairs.append({
+      'name': df_column,
+      'scaler': torch.load(scalers_dir / f'{df_column}.bin') if scalers_dir else None
+    })
+  return pairs
+
+def create_model(args, datasets):
+  if args.model_type == 'custom':
+    if args.model_name == 'rnn':
+      input_size = datasets['train'][0]['sequence'].shape[-1]
+      return RNNModel(input_size, args.rnn_hidden_size, args.rnn_num_layers, args.rnn_num_directions, args.dropout)
+
+    if args.model_name == 'transformer-encoder':
+      input_size = datasets['train'][0]['sequence'].shape[-1]
+      return TransformerModel(input_size, args.transformer_num_heads, args.transformer_activation, args.dropout, args.transformer_num_layers, args.max_sequence_length)
+
+    if args.model_name == 'feedforward':
+      input_size = datasets['train'][0]['features'].shape[-1]
+      return FeedforwardNetwork(input_size, args.ff_hidden_sizes, args.dropout)
+
+    raise Exception(f'Could not handle model_name "{args.model_name}" while creating custom model')
+
+  if args.model_type == 'huggingface':
+    config = AutoConfig.from_pretrained(args.model_name, num_labels=2)
+
+    if args.data_type == 'text':
+      return AutoModelForSequenceClassification.from_pretrained(args.model_name, config=config)
+
+    if args.data_type == 'audio':
+      model = AutoModelForAudioClassification.from_pretrained(args.model_name, config=config)
+      model.freeze_feature_extractor()
+      return model
+
+    raise Exception(f'Could not handle data_type "{args.data_type}" while creating huggingface model')
+
+  raise Exception(f'Could not handle model_type "{args.model_type}" while creating model')
+
 
 def create_optimizer_artefacts(args, model, train_dataset):
   mixed_precision_scaler = torch.cuda.amp.GradScaler(enabled=args.mixed_precision)
@@ -170,7 +222,8 @@ def create_optimizer_artefacts(args, model, train_dataset):
     weight_decay=args.weight_decay
   )
   num_training_steps = int(np.ceil(len(train_dataset) / args.train_batch_size)) * args.num_train_epochs
-  scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=round(args.warmup_proportion * num_training_steps), num_training_steps=num_training_steps)
+  num_warmup_steps = round(args.warmup_proportion * num_training_steps)
+  scheduler = get_scheduler(name=args.learning_rate_scheduler, optimizer=optimizer, num_warmup_steps=num_warmup_steps, num_training_steps=num_training_steps)
   return {
     'mixed_precision_scaler': mixed_precision_scaler,
     'optimizer': optimizer,
@@ -179,7 +232,6 @@ def create_optimizer_artefacts(args, model, train_dataset):
 
 def train_all_epochs(args, model, datasets, optimizer_artefacts):
   epoch_to_dev_map_score = {}
-  epoch_to_test_map_score = {}
   all_losses = []
 
   for epoch in range(args.num_train_epochs):
@@ -187,16 +239,11 @@ def train_all_epochs(args, model, datasets, optimizer_artefacts):
     measure_time(f'training epoch {current_epoch}', lambda: train_epoch(args, model, datasets['train'], optimizer_artefacts, current_epoch, all_losses))
 
     print(f'Evaluating model epoch {current_epoch} over dev')
-    dev_evaluation, dev_predictions = evaluate_model(args, model, datasets['dev'])
+    dev_evaluation, dev_predictions = evaluate_model(args, model, datasets['dev'], NON_INPUT_FIELDS)
     save_evaluation(args.output_dir / f'epoch-{current_epoch}', 'dev', dev_evaluation, dev_predictions)
     epoch_to_dev_map_score[current_epoch] = dev_evaluation['mean_avg_precision']
 
-    print(f'Evaluating model epoch {current_epoch} over test')
-    test_evaluation, test_predictions = evaluate_model(args, model, datasets['test'])
-    save_evaluation(args.output_dir / f'epoch-{current_epoch}', 'test', test_evaluation, test_predictions)
-    epoch_to_test_map_score[current_epoch] = test_evaluation['mean_avg_precision']
-
-  return epoch_to_dev_map_score, epoch_to_test_map_score, all_losses
+  return epoch_to_dev_map_score, all_losses
 
 def train_epoch(args, model, dataset, optimizer_artefacts, current_epoch, all_losses):
   model.train()
@@ -234,92 +281,54 @@ def train_epoch(args, model, dataset, optimizer_artefacts, current_epoch, all_lo
   epoch_dir = args.output_dir / f'epoch-{current_epoch}'
   epoch_dir.mkdir(parents=True, exist_ok=True)
 
-  model.save_pretrained(epoch_dir)
-  save_losses(losses, epoch_dir)
+  save_model(args, model, epoch_dir)
   all_losses.extend(losses)
 
-def move_tensors_to_device(dictionary):
- for k, v in dictionary.items():
-    if torch.is_tensor(v):
-      dictionary[k] = v.to(get_device())
-    elif type(v) == dict:
-      move_tensors_to_device(v)
+def save_model(args, model, epoch_dir):
+  if args.model_type == 'huggingface':
+    return model.save_pretrained(epoch_dir)
 
-def get_device():
-  return 'cuda' if torch.cuda.is_available() else 'cpu'
+  if args.model_type == 'custom':
+    return torch.save(model, epoch_dir / 'model.pt')
 
-def save_losses(losses, target_path):
-  np.save(target_path / 'losses.npy', np.array(losses))
+  raise Exception(f'Could not handle model_type "{args.model_type}" while saving model')
 
-def format_number(num):
-  return '{:.4f}'.format(num)
+def load_model(args, epoch_dir):
+  if args.model_type == 'huggingface':
+    if args.data_type == 'text':
+      return AutoModelForSequenceClassification.from_pretrained(epoch_dir)
 
+    if args.data_type == 'audio':
+      return AutoModelForAudioClassification.from_pretrained(epoch_dir)
 
-def evaluate_model(args, model, dataset):
-  def is_input_field(name):
-    return name not in NON_INPUT_FIELDS
+    raise Exception(f'Could not handle data_type "{args.data_type}" while loading huggingface model')
 
-  model.eval()
-  data_loader = DataLoader(dataset, batch_size=args.eval_batch_size, shuffle=True, drop_last=False)
+  if args.model_type == 'custom':
+    return torch.load(epoch_dir / 'model.pt', map_location=get_device())
 
-  unique_file_identifiers = data_loader.dataset.df['file_identifier'].unique().tolist()
-  unique_file_identifiers.sort()
-  actual = { file_identifier: {} for file_identifier in unique_file_identifiers }
-  predicted = { file_identifier: {} for file_identifier in unique_file_identifiers }
+  raise Exception(f'Could not handle model_type "{args.model_type}" while loading model')
 
-  with torch.no_grad():
-    for batch in tqdm(data_loader):
-      move_tensors_to_device(batch)
-      model_input = {k: v for k, v in batch.items() if is_input_field(k)}
-      batch_predicted = model(**model_input).logits
-      batch_predicted = nn.Softmax(dim=1)(batch_predicted)
-      batch_predicted = batch_predicted[:, 1]
+def evaluate_on_test(args, best_epoch, dataset):
+  best_epoch_dir = args.output_dir / f'epoch-{best_epoch}'
+  best_model = load_model(args, best_epoch_dir)
+  best_model.to(get_device())
 
-      for file_id, line_number, actual_value, predicted_score in zip(batch['file_identifier'], \
-                                                                      batch['line_number'].tolist(), \
-                                                                      batch['is_claim'].tolist(), \
-                                                                      batch_predicted.tolist()):
+  test_evaluation, test_predictions = evaluate_model(args, best_model, dataset, NON_INPUT_FIELDS)
+  save_evaluation(best_epoch_dir, 'test', test_evaluation, test_predictions)
 
-        actual[file_id][line_number] = actual_value
-        predicted[file_id][line_number] = predicted_score
+  return test_evaluation['mean_avg_precision']
 
-  actual_list = []
-  predicted_list = []
-  for file_identifier in unique_file_identifiers:
-    actual_list.append(actual[file_identifier])
-    predicted_list.append(predicted[file_identifier])
+def get_best_performing_epoch(epoch_to_map_score):
+  sorted_by_map_desc = sorted(epoch_to_map_score.items(), key=operator.itemgetter(1), reverse=True)
+  return sorted_by_map_desc[0][0]
 
-  return evaluate(actual_list, predicted_list), predicted
+def delete_all_epoch_dirs_but(best_epoch, output_dir):
+  all_epochs_dir = glob.glob(f'{output_dir}/epoch-*')
+  best_epoch = f'epoch-{best_epoch}'
 
-def save_evaluation(dir_path, subset, evaluation, predictions):
-  with open(dir_path / f'{subset}-evaluation.txt', 'w') as f:
-    f.write(f'Mean Average Precision: {format_number(evaluation["mean_avg_precision"])}\n')
-    f.write(f'Mean Reciprocal Rank: {format_number(evaluation["mean_reciprocal_rank"])}\n')
-    f.write(f'Mean R-Precision: {format_number(evaluation["mean_r_precision"])}\n')
-    f.write(f'Overall Precisions: { [format_number(num) for num in evaluation["overall_precisions"]]}\n')
-
-
-  predictions_dir = dir_path / f'{subset}-predictions'
-  predictions_dir.mkdir(parents=True, exist_ok=True)
-
-  for file_identifier, predictions in predictions.items():
-    sorted_by_line_number = sorted(predictions.items(), key=operator.itemgetter(0))
-    with open(predictions_dir / f'{file_identifier}.txt', 'w') as f:
-      for (line_number, score) in sorted_by_line_number:
-        f.write(f'{line_number} {score}\n')
-
-def save_map_scores(epoch_to_map_score, file_path_no_extension):
-  tuples_sorted_by_epoch_asc = sorted(epoch_to_map_score.items(), key=operator.itemgetter(0))
-  tuples_sorted_by_epoch_asc = [(epoch, format_number(score)) for epoch, score in tuples_sorted_by_epoch_asc]
-
-  tuples_sorted_by_map_desc = sorted(epoch_to_map_score.items(), key=operator.itemgetter(1), reverse=True)
-  tuples_sorted_by_map_desc = [(epoch, format_number(score)) for epoch, score in tuples_sorted_by_map_desc]
-
-  with open(f'{file_path_no_extension}.txt', 'w') as f:
-    f.write(str(tuples_sorted_by_epoch_asc))
-    f.write('\n\n')
-    f.write(str(tuples_sorted_by_map_desc))
-    f.write('\n\n')
+  for epoch_dir in all_epochs_dir:
+    if not epoch_dir.endswith(best_epoch):
+      shutil.rmtree(epoch_dir)
 
 if __name__ == '__main__':
-  measure_time('model training', train)
+  measure_time('training', train)

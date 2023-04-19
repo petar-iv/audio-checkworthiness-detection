@@ -1,0 +1,28 @@
+{
+  "output_dir": "/checkworthy-research/audio-checkworthiness-detection/trained-models/features-rn/rnn-openl3/best-train-balanced-1",
+  "overwrite_output_dir": false,
+  "train_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/train-balanced-1",
+  "dev_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/dev",
+  "test_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/test",
+  "df_column": "openl3-rn",
+  "scalers_dir": "/checkworthy-research/audio-checkworthiness-detection/trained-scalers",
+  "max_sequence_length": 76,
+  "rnn_num_layers": 1,
+  "rnn_num_directions": 1,
+  "rnn_hidden_size": 100,
+  "dropout": 0.2,
+  "num_train_epochs": 15,
+  "learning_rate": 0.007,
+  "warmup_proportion": 0.1,
+  "train_batch_size": 30,
+  "eval_batch_size": 30,
+  "mixed_precision": true,
+  "max_grad_norm": 1.0,
+  "optimizer_betas": [
+    0.9,
+    0.999
+  ],
+  "epsilon": 1e-08,
+  "weight_decay": 0.009,
+  "seed": 42
+}

@@ -1,0 +1,41 @@
+{
+  "output_dir": "/checkworthy-research/audio-checkworthiness-detection/trained-models/features/ner/best-train-15x",
+  "overwrite_output_dir": false,
+  "train_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/train-15x",
+  "dev_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/dev",
+  "test_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/test",
+  "dataset_type": "reduced",
+  "data_type": "features",
+  "df_columns": [
+    "ner"
+  ],
+  "scalers_dir": "/checkworthy-research/audio-checkworthiness-detection/trained-scalers",
+  "max_sequence_length": null,
+  "model_type": "custom",
+  "model_name": "feedforward",
+  "dropout": 0.2,
+  "rnn_num_layers": null,
+  "rnn_num_directions": null,
+  "rnn_hidden_size": null,
+  "transformer_num_heads": null,
+  "transformer_num_layers": null,
+  "transformer_activation": "gelu",
+  "ff_hidden_sizes": [
+    8
+  ],
+  "num_train_epochs": 15,
+  "learning_rate": 0.05,
+  "learning_rate_scheduler": "linear",
+  "warmup_proportion": 0.1,
+  "train_batch_size": 200,
+  "eval_batch_size": 200,
+  "mixed_precision": true,
+  "max_grad_norm": 1.0,
+  "optimizer_betas": [
+    0.9,
+    0.999
+  ],
+  "epsilon": 1e-08,
+  "weight_decay": 0.02,
+  "seed": 42
+}

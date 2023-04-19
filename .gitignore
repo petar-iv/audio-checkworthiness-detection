@@ -3,12 +3,19 @@
 /data/clef2021/task-1b-english/full/v1
 /data/clef2021/task-1b-english/reduced/v1/02-audios
 /data/clef2021/task-1b-english/reduced/v1/04-audio-level-pairs
-/data/clef2021/task-1b-english/reduced/v1/06-sentence-level-alignment
-/data/clef2021/task-1b-english/reduced/v1/07-audio-segments
-
-output-building-sentence-level-alignment.txt
+/data/clef2021/task-1b-english/reduced/v1/06-missed-checkworthy-manual-alignment
+/data/clef2021/task-1b-english/reduced/v1/07-sentence-level-alignment
+/data/clef2021/task-1b-english/reduced/v1/08-audio-segments
+/data/clef2021/task-1b-english/reduced/v1/09-audio-segments-rn
+/data/clef2021/task-1b-english/reduced/v1/10-audio-segments-gs
+/data/clef2021/task-1b-english/reduced/v1/data-files
+/data/clef2021/task-1b-english/reduced/v1/features
+/data/clef2021/task-1b-english/reduced/v1/features-gs
+/data/clef2021/task-1b-english/reduced/v1/features-rn
 
 /trained-models
+/trained-scalers
+/kaldi-work-dir
 
 # ---
 

@@ -1,0 +1,278 @@
+> applying begin-end manual alignment started at 2022-07-04 17:47:24.343567
+> creating audio-transcript pair for train/20121023_third_presidential_debate/audio-1.wav started at 2022-07-04 17:47:24.346843
+> (0:00:11.072929) creating audio-transcript pair for train/20121023_third_presidential_debate/audio-1.wav completed at 2022-07-04 17:47:35.419813
+
+
+> creating audio-transcript pair for train/20150805_GOP_Cleveland/audio-1.wav started at 2022-07-04 17:47:35.419990
+> (0:00:12.148542) creating audio-transcript pair for train/20150805_GOP_Cleveland/audio-1.wav completed at 2022-07-04 17:47:47.568575
+
+
+> creating audio-transcript pair for train/20151013_democrats_las_Vegas/audio-1.wav started at 2022-07-04 17:47:47.568818
+> (0:00:13.372198) creating audio-transcript pair for train/20151013_democrats_las_Vegas/audio-1.wav completed at 2022-07-04 17:48:00.941049
+
+
+> creating audio-transcript pair for train/20151028_GOP_boulder/audio-1.wav started at 2022-07-04 17:48:00.941195
+> (0:00:34.628961) creating audio-transcript pair for train/20151028_GOP_boulder/audio-1.wav completed at 2022-07-04 17:48:35.570209
+
+
+> creating audio-transcript pair for train/20151110_GOP_Milwaukee/audio-1.wav started at 2022-07-04 17:48:35.570480
+> (0:00:11.487159) creating audio-transcript pair for train/20151110_GOP_Milwaukee/audio-1.wav completed at 2022-07-04 17:48:47.057685
+
+
+> creating audio-transcript pair for train/20160112_Obama_state_of_the_union/audio-1.wav started at 2022-07-04 17:48:47.057905
+> (0:00:05.664298) creating audio-transcript pair for train/20160112_Obama_state_of_the_union/audio-1.wav completed at 2022-07-04 17:48:52.722233
+
+
+> creating audio-transcript pair for train/20160115_GOP_Charleston/audio-1.wav started at 2022-07-04 17:48:52.722371
+> (0:00:01.946403) creating audio-transcript pair for train/20160115_GOP_Charleston/audio-1.wav completed at 2022-07-04 17:48:54.668805
+
+
+> creating audio-transcript pair for train/20160115_GOP_Charleston/audio-2.wav started at 2022-07-04 17:48:54.668939
+> (0:00:01.958041) creating audio-transcript pair for train/20160115_GOP_Charleston/audio-2.wav completed at 2022-07-04 17:48:56.627011
+
+
+> creating audio-transcript pair for train/20160115_GOP_Charleston/audio-3.wav started at 2022-07-04 17:48:56.627150
+> (0:00:01.900130) creating audio-transcript pair for train/20160115_GOP_Charleston/audio-3.wav completed at 2022-07-04 17:48:58.527325
+
+
+> creating audio-transcript pair for train/20160115_GOP_Charleston/audio-4.wav started at 2022-07-04 17:48:58.527546
+> (0:00:02.521376) creating audio-transcript pair for train/20160115_GOP_Charleston/audio-4.wav completed at 2022-07-04 17:49:01.048954
+
+
+> creating audio-transcript pair for train/20160115_GOP_Charleston/audio-5.wav started at 2022-07-04 17:49:01.049084
+> (0:00:01.241112) creating audio-transcript pair for train/20160115_GOP_Charleston/audio-5.wav completed at 2022-07-04 17:49:02.290228
+
+
+> creating audio-transcript pair for train/20160115_GOP_Charleston/audio-6.wav started at 2022-07-04 17:49:02.290366
+> (0:00:01.564689) creating audio-transcript pair for train/20160115_GOP_Charleston/audio-6.wav completed at 2022-07-04 17:49:03.855086
+
+
+> creating audio-transcript pair for train/20160115_GOP_Charleston/audio-7.wav started at 2022-07-04 17:49:03.855233
+> (0:00:00.879343) creating audio-transcript pair for train/20160115_GOP_Charleston/audio-7.wav completed at 2022-07-04 17:49:04.734607
+
+
+> creating audio-transcript pair for train/20160117_democrats_Charleston/audio-1.wav started at 2022-07-04 17:49:04.734737
+> (0:00:11.071918) creating audio-transcript pair for train/20160117_democrats_Charleston/audio-1.wav completed at 2022-07-04 17:49:15.806683
+
+
+> creating audio-transcript pair for train/20160204_democrats_new_Hampshire/audio-1.wav started at 2022-07-04 17:49:15.806818
+> (0:00:10.448280) creating audio-transcript pair for train/20160204_democrats_new_Hampshire/audio-1.wav completed at 2022-07-04 17:49:26.255127
+
+
+> creating audio-transcript pair for train/20160211_democrats_Milwaukee/audio-1.wav started at 2022-07-04 17:49:26.255262
+> (0:00:11.826151) creating audio-transcript pair for train/20160211_democrats_Milwaukee/audio-1.wav completed at 2022-07-04 17:49:38.081445
+
+
+> creating audio-transcript pair for train/20160213_GOP_Greenville/audio-1.wav started at 2022-07-04 17:49:38.081580
+> (0:00:10.366830) creating audio-transcript pair for train/20160213_GOP_Greenville/audio-1.wav completed at 2022-07-04 17:49:48.448452
+
+
+> creating audio-transcript pair for train/20160225_GOP_Texas/audio-1.wav started at 2022-07-04 17:49:48.448676
+> (0:00:12.901401) creating audio-transcript pair for train/20160225_GOP_Texas/audio-1.wav completed at 2022-07-04 17:50:01.350108
+
+
+> creating audio-transcript pair for train/20160303_GOP_Michigan/audio-1.wav started at 2022-07-04 17:50:01.350239
+> (0:00:26.511147) creating audio-transcript pair for train/20160303_GOP_Michigan/audio-1.wav completed at 2022-07-04 17:50:27.861416
+
+
+> creating audio-transcript pair for train/20160309_democrats_Miami/audio-1.wav started at 2022-07-04 17:50:27.861543
+> (0:00:11.886583) creating audio-transcript pair for train/20160309_democrats_Miami/audio-1.wav completed at 2022-07-04 17:50:39.748159
+
+
+> creating audio-transcript pair for train/20160311_GOP_Miami/audio-1.wav started at 2022-07-04 17:50:39.748315
+> (0:00:31.365037) creating audio-transcript pair for train/20160311_GOP_Miami/audio-1.wav completed at 2022-07-04 17:51:11.113382
+
+
+> creating audio-transcript pair for train/20160401_Trump_Milwaukee/audio-1.wav started at 2022-07-04 17:51:11.113511
+> (0:00:04.738787) creating audio-transcript pair for train/20160401_Trump_Milwaukee/audio-1.wav completed at 2022-07-04 17:51:15.852744
+
+
+> creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-1.wav started at 2022-07-04 17:51:15.852871
+> (0:00:00.484240) creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-1.wav completed at 2022-07-04 17:51:16.337138
+
+
+> creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-2.wav started at 2022-07-04 17:51:16.337267
+> (0:00:00.357978) creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-2.wav completed at 2022-07-04 17:51:16.695270
+
+
+> creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-3.wav started at 2022-07-04 17:51:16.695388
+> (0:00:00.666532) creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-3.wav completed at 2022-07-04 17:51:17.361947
+
+
+> creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-4.wav started at 2022-07-04 17:51:17.362080
+> (0:00:01.719315) creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-4.wav completed at 2022-07-04 17:51:19.081422
+
+
+> creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-5.wav started at 2022-07-04 17:51:19.081552
+> (0:00:00.584057) creating audio-transcript pair for train/20160404_Hillary_meet_the_press/audio-5.wav completed at 2022-07-04 17:51:19.665638
+
+
+> creating audio-transcript pair for train/20160415_NY_democratic_debate/audio-1.wav started at 2022-07-04 17:51:19.665774
+> (0:00:31.387823) creating audio-transcript pair for train/20160415_NY_democratic_debate/audio-1.wav completed at 2022-07-04 17:51:51.053626
+
+
+> creating audio-transcript pair for train/20160417_meet_the_press/audio-1.wav started at 2022-07-04 17:51:51.053761
+> (0:00:01.069856) creating audio-transcript pair for train/20160417_meet_the_press/audio-1.wav completed at 2022-07-04 17:51:52.123649
+
+
+> creating audio-transcript pair for train/20160417_meet_the_press/audio-2.wav started at 2022-07-04 17:51:52.125066
+> (0:00:00.247527) creating audio-transcript pair for train/20160417_meet_the_press/audio-2.wav completed at 2022-07-04 17:51:52.372624
+
+
+> creating audio-transcript pair for train/20160417_meet_the_press/audio-3.wav started at 2022-07-04 17:51:52.372753
+> (0:00:00.594160) creating audio-transcript pair for train/20160417_meet_the_press/audio-3.wav completed at 2022-07-04 17:51:52.966944
+
+
+> creating audio-transcript pair for train/20160417_meet_the_press/audio-4.wav started at 2022-07-04 17:51:52.967091
+> (0:00:01.047137) creating audio-transcript pair for train/20160417_meet_the_press/audio-4.wav completed at 2022-07-04 17:51:54.014340
+
+
+> creating audio-transcript pair for train/20160424_meet_the_press/audio-1.wav started at 2022-07-04 17:51:54.014467
+> (0:00:01.481440) creating audio-transcript pair for train/20160424_meet_the_press/audio-1.wav completed at 2022-07-04 17:51:55.495937
+
+
+> creating audio-transcript pair for train/20160508_Trump_meet_the_press/audio-1.wav started at 2022-07-04 17:51:55.496067
+> (0:00:01.543251) creating audio-transcript pair for train/20160508_Trump_meet_the_press/audio-1.wav completed at 2022-07-04 17:51:57.039346
+
+
+> creating audio-transcript pair for train/20160508_Trump_meet_the_press/audio-2.wav started at 2022-07-04 17:51:57.039483
+> (0:00:00.627536) creating audio-transcript pair for train/20160508_Trump_meet_the_press/audio-2.wav completed at 2022-07-04 17:51:57.667047
+
+
+> creating audio-transcript pair for train/20160529_Sanders_MeetThePress/audio-1.wav started at 2022-07-04 17:51:57.667185
+> (0:00:01.439805) creating audio-transcript pair for train/20160529_Sanders_MeetThePress/audio-1.wav completed at 2022-07-04 17:51:59.107016
+
+
+> creating audio-transcript pair for train/20160529_Sanders_MeetThePress/audio-2.wav started at 2022-07-04 17:51:59.107139
+> (0:00:00.862146) creating audio-transcript pair for train/20160529_Sanders_MeetThePress/audio-2.wav completed at 2022-07-04 17:51:59.969314
+
+
+> creating audio-transcript pair for train/20160622_Trump_NY_Soho/audio-1.wav started at 2022-07-04 17:51:59.969462
+> (0:00:04.052075) creating audio-transcript pair for train/20160622_Trump_NY_Soho/audio-1.wav completed at 2022-07-04 17:52:04.021568
+
+
+> creating audio-transcript pair for train/20160721_Trump_draft_RNC/audio-1.wav started at 2022-07-04 17:52:04.021708
+> (0:00:12.109724) creating audio-transcript pair for train/20160721_Trump_draft_RNC/audio-1.wav completed at 2022-07-04 17:52:16.131463
+
+
+> creating audio-transcript pair for train/20160901_Trump_immigration_Phoenix/audio-1.wav started at 2022-07-04 17:52:16.131604
+> (0:00:11.617769) creating audio-transcript pair for train/20160901_Trump_immigration_Phoenix/audio-1.wav completed at 2022-07-04 17:52:27.749401
+
+
+> creating audio-transcript pair for train/20160907_NBC_commander_in_chief_forum/audio-1.wav started at 2022-07-04 17:52:27.749536
+> (0:00:02.641204) creating audio-transcript pair for train/20160907_NBC_commander_in_chief_forum/audio-1.wav completed at 2022-07-04 17:52:30.390769
+
+
+> creating audio-transcript pair for train/20160907_NBC_commander_in_chief_forum/audio-2.wav started at 2022-07-04 17:52:30.390909
+> (0:00:02.499543) creating audio-transcript pair for train/20160907_NBC_commander_in_chief_forum/audio-2.wav completed at 2022-07-04 17:52:32.890478
+
+
+> creating audio-transcript pair for train/20160926_first_presidential_debate/audio-1.wav started at 2022-07-04 17:52:32.890597
+> (0:00:10.067558) creating audio-transcript pair for train/20160926_first_presidential_debate/audio-1.wav completed at 2022-07-04 17:52:42.958180
+
+
+> creating audio-transcript pair for train/20161005_vice_presidential_debate/audio-1.wav started at 2022-07-04 17:52:42.958303
+> (0:00:08.819784) creating audio-transcript pair for train/20161005_vice_presidential_debate/audio-1.wav completed at 2022-07-04 17:52:51.778114
+
+
+> creating audio-transcript pair for train/20161010_second_presidential_debate/audio-1.wav started at 2022-07-04 17:52:51.778245
+> (0:00:23.670639) creating audio-transcript pair for train/20161010_second_presidential_debate/audio-1.wav completed at 2022-07-04 17:53:15.448913
+
+
+> creating audio-transcript pair for train/20161019_third_presidential_debate/audio-1.wav started at 2022-07-04 17:53:15.449063
+> (0:00:24.797187) creating audio-transcript pair for train/20161019_third_presidential_debate/audio-1.wav completed at 2022-07-04 17:53:40.246278
+
+
+> creating audio-transcript pair for train/20170111_Trump_press_conference/audio-1.wav started at 2022-07-04 17:53:40.246419
+> (0:00:06.345292) creating audio-transcript pair for train/20170111_Trump_press_conference/audio-1.wav completed at 2022-07-04 17:53:46.591745
+
+
+> creating audio-transcript pair for train/20170120_Trump_inauguration/audio-1.wav started at 2022-07-04 17:53:46.591953
+> (0:00:01.685661) creating audio-transcript pair for train/20170120_Trump_inauguration/audio-1.wav completed at 2022-07-04 17:53:48.277640
+
+
+> creating audio-transcript pair for train/20170126_Trump_ABC/audio-1.wav started at 2022-07-04 17:53:48.277774
+> (0:00:03.284983) creating audio-transcript pair for train/20170126_Trump_ABC/audio-1.wav completed at 2022-07-04 17:53:51.562789
+
+
+> creating audio-transcript pair for train/20170205_Trump_Oreilly/audio-1.wav started at 2022-07-04 17:53:51.562925
+> (0:00:02.140285) creating audio-transcript pair for train/20170205_Trump_Oreilly/audio-1.wav completed at 2022-07-04 17:53:53.703245
+
+
+> creating audio-transcript pair for train/20170207_Sanders_Cruz_healthcare_debate/audio-1.wav started at 2022-07-04 17:53:53.703383
+> (0:00:09.210239) creating audio-transcript pair for train/20170207_Sanders_Cruz_healthcare_debate/audio-1.wav completed at 2022-07-04 17:54:02.913653
+
+
+> creating audio-transcript pair for train/20170216_Trump_press_conference/audio-1.wav started at 2022-07-04 17:54:02.913829
+> (0:00:08.107446) creating audio-transcript pair for train/20170216_Trump_press_conference/audio-1.wav completed at 2022-07-04 17:54:11.021305
+
+
+> creating audio-transcript pair for train/20170218_Trump_Florida/audio-1.wav started at 2022-07-04 17:54:11.021440
+> (0:00:05.708356) creating audio-transcript pair for train/20170218_Trump_Florida/audio-1.wav completed at 2022-07-04 17:54:16.729832
+
+
+> creating audio-transcript pair for train/20170224_Trump_CPAC/audio-1.wav started at 2022-07-04 17:54:16.730015
+> (0:00:12.962621) creating audio-transcript pair for train/20170224_Trump_CPAC/audio-1.wav completed at 2022-07-04 17:54:29.692671
+
+
+> creating audio-transcript pair for dev/20170228_Trump_Congress_joint_session/audio-1.wav started at 2022-07-04 17:54:29.695066
+> (0:00:07.162899) creating audio-transcript pair for dev/20170228_Trump_Congress_joint_session/audio-1.wav completed at 2022-07-04 17:54:36.857999
+
+
+> creating audio-transcript pair for dev/20170315_Trump_Nashville/audio-1.wav started at 2022-07-04 17:54:36.858142
+> (0:00:03.390340) creating audio-transcript pair for dev/20170315_Trump_Nashville/audio-1.wav completed at 2022-07-04 17:54:40.248517
+
+
+> creating audio-transcript pair for dev/20170404_Trump_CEO_TownHall/audio-1.wav started at 2022-07-04 17:54:40.248694
+> (0:00:02.858297) creating audio-transcript pair for dev/20170404_Trump_CEO_TownHall/audio-1.wav completed at 2022-07-04 17:54:43.107022
+
+
+> creating audio-transcript pair for dev/20170430_Trump_CBS_FactTheNation/audio-1.wav started at 2022-07-04 17:54:43.107155
+> (0:00:02.294309) creating audio-transcript pair for dev/20170430_Trump_CBS_FactTheNation/audio-1.wav completed at 2022-07-04 17:54:45.401493
+
+
+> creating audio-transcript pair for dev/20170601_Trump_Paris_Climate/audio-1.wav started at 2022-07-04 17:54:45.401628
+> (0:00:08.192153) creating audio-transcript pair for dev/20170601_Trump_Paris_Climate/audio-1.wav completed at 2022-07-04 17:54:53.593812
+
+
+> creating audio-transcript pair for dev/20170713_Trump_Robertson_interview/audio-1.wav started at 2022-07-04 17:54:53.593950
+> (0:00:02.367483) creating audio-transcript pair for dev/20170713_Trump_Robertson_interview/audio-1.wav completed at 2022-07-04 17:54:55.961462
+
+
+> creating audio-transcript pair for dev/20170724_Trump_healthcare/audio-1.wav started at 2022-07-04 17:54:55.962066
+> (0:00:01.639170) creating audio-transcript pair for dev/20170724_Trump_healthcare/audio-1.wav completed at 2022-07-04 17:54:57.601267
+
+
+> creating audio-transcript pair for test/20170512_Trump_NBC_holt_interview/audio-1.wav started at 2022-07-04 17:54:57.603445
+> (0:00:01.376939) creating audio-transcript pair for test/20170512_Trump_NBC_holt_interview/audio-1.wav completed at 2022-07-04 17:54:58.980414
+
+
+> creating audio-transcript pair for test/20170803_Trump_WV/audio-1.wav started at 2022-07-04 17:54:58.980590
+> (0:00:03.570515) creating audio-transcript pair for test/20170803_Trump_WV/audio-1.wav completed at 2022-07-04 17:55:02.551136
+
+
+> creating audio-transcript pair for test/20170822_Trump_phoenix/audio-1.wav started at 2022-07-04 17:55:02.551278
+> (0:00:07.399142) creating audio-transcript pair for test/20170822_Trump_phoenix/audio-1.wav completed at 2022-07-04 17:55:09.950460
+
+
+> creating audio-transcript pair for test/20180426_Trump_Fox_Friends/audio-1.wav started at 2022-07-04 17:55:09.950594
+> (0:00:02.692632) creating audio-transcript pair for test/20180426_Trump_Fox_Friends/audio-1.wav completed at 2022-07-04 17:55:12.643253
+
+
+> creating audio-transcript pair for test/20180525_Trump_Naval/audio-1.wav started at 2022-07-04 17:55:12.643384
+> (0:00:03.129511) creating audio-transcript pair for test/20180525_Trump_Naval/audio-1.wav completed at 2022-07-04 17:55:15.772924
+
+
+> creating audio-transcript pair for test/20180612_Trump_Singapore/audio-1.wav started at 2022-07-04 17:55:15.773057
+> (0:00:05.966924) creating audio-transcript pair for test/20180612_Trump_Singapore/audio-1.wav completed at 2022-07-04 17:55:21.740011
+
+
+> creating audio-transcript pair for test/20180615_Trump_lawn/audio-1.wav started at 2022-07-04 17:55:21.740138
+> (0:00:02.905012) creating audio-transcript pair for test/20180615_Trump_lawn/audio-1.wav completed at 2022-07-04 17:55:24.645180
+
+
+> creating audio-transcript pair for test/20180628_Trump_NorthDakota/audio-1.wav started at 2022-07-04 17:55:24.645312
+> (0:00:07.261537) creating audio-transcript pair for test/20180628_Trump_NorthDakota/audio-1.wav completed at 2022-07-04 17:55:31.906881
+
+
+> (0:08:07.563399) applying begin-end manual alignment completed at 2022-07-04 17:55:31.906986

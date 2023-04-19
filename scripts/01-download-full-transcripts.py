@@ -8,27 +8,25 @@ from utils import full_dataset_dir, iterate_full_event_files
 
 
 base_url = 'https://gitlab.com/checkthat_lab/clef2021-checkthat-lab/-/raw/ec6370e19f67f63772aff963cd1ee48284d7a599/task1'
+version = 'v1'
 
 def download_full_transcripts():
   args = process_command_line_args()
-  version = 'v1'
 
-  train_dir, dev_dir, test_dir = create_transcripts_dirs(args, version)
+  train_dir, dev_dir, test_dir = create_transcripts_dirs(args)
 
-  download_train_and_dev_subsets(version, train_dir, dev_dir)
+  download_train_and_dev_subsets(train_dir, dev_dir)
   download_test_subset(test_dir)
 
   print('Download of transcripts done')
 
 def process_command_line_args():
   parser = argparse.ArgumentParser()
-  parser.add_argument('--data_dir', required=True, type=str)
+  parser.add_argument('--data_dir', required=True, type=Path)
   return parser.parse_args()
 
-def create_transcripts_dirs(args, version):
-  data_dir = Path(args.data_dir)
-  version_dir = full_dataset_dir(data_dir, version)
-  version_dir.mkdir(parents=True, exist_ok=True)
+def create_transcripts_dirs(args):
+  version_dir = full_dataset_dir(args.data_dir)
 
   train_dir = version_dir / 'train'
   train_dir.mkdir(parents=True, exist_ok=True)
@@ -41,7 +39,7 @@ def create_transcripts_dirs(args, version):
 
   return train_dir, dev_dir, test_dir
 
-def download_train_and_dev_subsets(version, train_dir, dev_dir):
+def download_train_and_dev_subsets(train_dir, dev_dir):
   def move_transcripts(archive_content_dir):
     move_files(Path(archive_content_dir) / version / 'train', train_dir)
     move_files(Path(archive_content_dir) / version / 'dev', dev_dir)

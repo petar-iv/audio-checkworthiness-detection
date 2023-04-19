@@ -1,0 +1,114 @@
+> reducing noise started at 2022-07-04 19:58:32.603956
+> reducing noise in train started at 2022-07-04 19:58:32.604583
+> processing event 20121023_third_presidential_debate started at 2022-07-04 19:58:32.605243
+> (0:04:05.430309) processing event 20121023_third_presidential_debate completed at 2022-07-04 20:02:38.035658
+> processing event 20150805_GOP_Cleveland started at 2022-07-04 20:02:38.035716
+> (0:05:02.456099) processing event 20150805_GOP_Cleveland completed at 2022-07-04 20:07:40.491873
+> processing event 20151013_democrats_las_Vegas started at 2022-07-04 20:07:40.491966
+> (0:05:28.090680) processing event 20151013_democrats_las_Vegas completed at 2022-07-04 20:13:08.582700
+> processing event 20151028_GOP_boulder started at 2022-07-04 20:13:08.582751
+> (0:05:48.710777) processing event 20151028_GOP_boulder completed at 2022-07-04 20:18:57.293577
+> processing event 20151110_GOP_Milwaukee started at 2022-07-04 20:18:57.293633
+> (0:05:49.792388) processing event 20151110_GOP_Milwaukee completed at 2022-07-04 20:24:47.086082
+> processing event 20160112_Obama_state_of_the_union started at 2022-07-04 20:24:47.086150
+> (0:00:59.944384) processing event 20160112_Obama_state_of_the_union completed at 2022-07-04 20:25:47.030576
+> processing event 20160115_GOP_Charleston started at 2022-07-04 20:25:47.030650
+> (0:05:47.656071) processing event 20160115_GOP_Charleston completed at 2022-07-04 20:31:34.686793
+> processing event 20160117_democrats_Charleston started at 2022-07-04 20:31:34.686852
+> (0:03:46.071499) processing event 20160117_democrats_Charleston completed at 2022-07-04 20:35:20.758400
+> processing event 20160204_democrats_new_Hampshire started at 2022-07-04 20:35:20.758473
+> (0:04:13.187681) processing event 20160204_democrats_new_Hampshire completed at 2022-07-04 20:39:33.946209
+> processing event 20160211_democrats_Milwaukee started at 2022-07-04 20:39:33.946262
+> (0:04:15.692696) processing event 20160211_democrats_Milwaukee completed at 2022-07-04 20:43:49.639011
+> processing event 20160213_GOP_Greenville started at 2022-07-04 20:43:49.639087
+> (0:05:44.560930) processing event 20160213_GOP_Greenville completed at 2022-07-04 20:49:34.200083
+> processing event 20160225_GOP_Texas started at 2022-07-04 20:49:34.200171
+> (0:06:46.709563) processing event 20160225_GOP_Texas completed at 2022-07-04 20:56:20.909785
+> processing event 20160303_GOP_Michigan started at 2022-07-04 20:56:20.909824
+> (0:05:20.389346) processing event 20160303_GOP_Michigan completed at 2022-07-04 21:01:41.299216
+> processing event 20160309_democrats_Miami started at 2022-07-04 21:01:41.299271
+> (0:03:36.848332) processing event 20160309_democrats_Miami completed at 2022-07-04 21:05:18.147649
+> processing event 20160311_GOP_Miami started at 2022-07-04 21:05:18.147715
+> (0:05:52.261993) processing event 20160311_GOP_Miami completed at 2022-07-04 21:11:10.409756
+> processing event 20160401_Trump_Milwaukee started at 2022-07-04 21:11:10.409794
+> (0:01:45.455083) processing event 20160401_Trump_Milwaukee completed at 2022-07-04 21:12:55.864925
+> processing event 20160404_Hillary_meet_the_press started at 2022-07-04 21:12:55.864978
+> (0:01:07.346973) processing event 20160404_Hillary_meet_the_press completed at 2022-07-04 21:14:03.211995
+> processing event 20160415_NY_democratic_debate started at 2022-07-04 21:14:03.212064
+> (0:04:15.955853) processing event 20160415_NY_democratic_debate completed at 2022-07-04 21:18:19.167965
+> processing event 20160417_meet_the_press started at 2022-07-04 21:18:19.168045
+> (0:01:07.343615) processing event 20160417_meet_the_press completed at 2022-07-04 21:19:26.511712
+> processing event 20160424_meet_the_press started at 2022-07-04 21:19:26.511763
+> (0:00:28.915055) processing event 20160424_meet_the_press completed at 2022-07-04 21:19:55.426863
+> processing event 20160508_Trump_meet_the_press started at 2022-07-04 21:19:55.426923
+> (0:01:26.555784) processing event 20160508_Trump_meet_the_press completed at 2022-07-04 21:21:21.982748
+> processing event 20160529_Sanders_MeetThePress started at 2022-07-04 21:21:21.982798
+> (0:00:58.375416) processing event 20160529_Sanders_MeetThePress completed at 2022-07-04 21:22:20.358260
+> processing event 20160622_Trump_NY_Soho started at 2022-07-04 21:22:20.358315
+> (0:00:55.037495) processing event 20160622_Trump_NY_Soho completed at 2022-07-04 21:23:15.395860
+> processing event 20160721_Trump_draft_RNC started at 2022-07-04 21:23:15.395939
+> (0:01:23.351830) processing event 20160721_Trump_draft_RNC completed at 2022-07-04 21:24:38.747832
+> processing event 20160901_Trump_immigration_Phoenix started at 2022-07-04 21:24:38.747932
+> (0:01:05.802298) processing event 20160901_Trump_immigration_Phoenix completed at 2022-07-04 21:25:44.550277
+> processing event 20160907_NBC_commander_in_chief_forum started at 2022-07-04 21:25:44.550354
+> (0:02:34.131702) processing event 20160907_NBC_commander_in_chief_forum completed at 2022-07-04 21:28:18.682107
+> processing event 20160926_first_presidential_debate started at 2022-07-04 21:28:18.682163
+> (0:04:44.946253) processing event 20160926_first_presidential_debate completed at 2022-07-04 21:33:03.628466
+> processing event 20161005_vice_presidential_debate started at 2022-07-04 21:33:03.628542
+> (0:04:17.870205) processing event 20161005_vice_presidential_debate completed at 2022-07-04 21:37:21.498791
+> processing event 20161010_second_presidential_debate started at 2022-07-04 21:37:21.498840
+> (0:04:20.841247) processing event 20161010_second_presidential_debate completed at 2022-07-04 21:41:42.340137
+> processing event 20161019_third_presidential_debate started at 2022-07-04 21:41:42.340199
+> (0:04:34.216558) processing event 20161019_third_presidential_debate completed at 2022-07-04 21:46:16.556811
+> processing event 20170111_Trump_press_conference started at 2022-07-04 21:46:16.556883
+> (0:02:35.619120) processing event 20170111_Trump_press_conference completed at 2022-07-04 21:48:52.176059
+> processing event 20170120_Trump_inauguration started at 2022-07-04 21:48:52.176123
+> (0:00:26.985870) processing event 20170120_Trump_inauguration completed at 2022-07-04 21:49:19.162059
+> processing event 20170126_Trump_ABC started at 2022-07-04 21:49:19.162138
+> (0:02:12.966925) processing event 20170126_Trump_ABC completed at 2022-07-04 21:51:32.129111
+> processing event 20170205_Trump_Oreilly started at 2022-07-04 21:51:32.129147
+> (0:01:09.430051) processing event 20170205_Trump_Oreilly completed at 2022-07-04 21:52:41.559243
+> processing event 20170207_Sanders_Cruz_healthcare_debate started at 2022-07-04 21:52:41.559304
+> (0:04:05.937614) processing event 20170207_Sanders_Cruz_healthcare_debate completed at 2022-07-04 21:56:47.496977
+> processing event 20170216_Trump_press_conference started at 2022-07-04 21:56:47.497014
+> (0:03:51.085167) processing event 20170216_Trump_press_conference completed at 2022-07-04 22:00:38.582228
+> processing event 20170218_Trump_Florida started at 2022-07-04 22:00:38.582295
+> (0:01:51.927304) processing event 20170218_Trump_Florida completed at 2022-07-04 22:02:30.509661
+> processing event 20170224_Trump_CPAC started at 2022-07-04 22:02:30.509753
+> (0:01:48.172467) processing event 20170224_Trump_CPAC completed at 2022-07-04 22:04:18.682268
+> (2:05:46.077826) reducing noise in train completed at 2022-07-04 22:04:18.682421
+> reducing noise in dev started at 2022-07-04 22:04:18.682430
+> processing event 20170228_Trump_Congress_joint_session started at 2022-07-04 22:04:18.682813
+> (0:01:19.941344) processing event 20170228_Trump_Congress_joint_session completed at 2022-07-04 22:05:38.624207
+> processing event 20170315_Trump_Nashville started at 2022-07-04 22:05:38.624253
+> (0:01:09.811421) processing event 20170315_Trump_Nashville completed at 2022-07-04 22:06:48.435718
+> processing event 20170404_Trump_CEO_TownHall started at 2022-07-04 22:06:48.435782
+> (0:01:07.301199) processing event 20170404_Trump_CEO_TownHall completed at 2022-07-04 22:07:55.737020
+> processing event 20170430_Trump_CBS_FactTheNation started at 2022-07-04 22:07:55.737092
+> (0:01:27.832057) processing event 20170430_Trump_CBS_FactTheNation completed at 2022-07-04 22:09:23.569199
+> processing event 20170601_Trump_Paris_Climate started at 2022-07-04 22:09:23.569274
+> (0:00:51.874561) processing event 20170601_Trump_Paris_Climate completed at 2022-07-04 22:10:15.443875
+> processing event 20170713_Trump_Robertson_interview started at 2022-07-04 22:10:15.443949
+> (0:01:48.415538) processing event 20170713_Trump_Robertson_interview completed at 2022-07-04 22:12:03.859537
+> processing event 20170724_Trump_healthcare started at 2022-07-04 22:12:03.859594
+> (0:00:25.820001) processing event 20170724_Trump_healthcare completed at 2022-07-04 22:12:29.679654
+> (0:08:10.997341) reducing noise in dev completed at 2022-07-04 22:12:29.679781
+> reducing noise in test started at 2022-07-04 22:12:29.679795
+> processing event 20170512_Trump_NBC_holt_interview started at 2022-07-04 22:12:29.680294
+> (0:00:46.147628) processing event 20170512_Trump_NBC_holt_interview completed at 2022-07-04 22:13:15.827970
+> processing event 20170803_Trump_WV started at 2022-07-04 22:13:15.828024
+> (0:00:59.574920) processing event 20170803_Trump_WV completed at 2022-07-04 22:14:15.402998
+> processing event 20170822_Trump_phoenix started at 2022-07-04 22:14:15.403053
+> (0:02:48.431564) processing event 20170822_Trump_phoenix completed at 2022-07-04 22:17:03.834663
+> processing event 20180426_Trump_Fox_Friends started at 2022-07-04 22:17:03.834714
+> (0:01:47.198615) processing event 20180426_Trump_Fox_Friends completed at 2022-07-04 22:18:51.033372
+> processing event 20180525_Trump_Naval started at 2022-07-04 22:18:51.033422
+> (0:01:05.178962) processing event 20180525_Trump_Naval completed at 2022-07-04 22:19:56.212429
+> processing event 20180612_Trump_Singapore started at 2022-07-04 22:19:56.212484
+> (0:03:31.932785) processing event 20180612_Trump_Singapore completed at 2022-07-04 22:23:28.145323
+> processing event 20180615_Trump_lawn started at 2022-07-04 22:23:28.145378
+> (0:02:02.900550) processing event 20180615_Trump_lawn completed at 2022-07-04 22:25:31.045986
+> processing event 20180628_Trump_NorthDakota started at 2022-07-04 22:25:31.046038
+> (0:03:08.211314) processing event 20180628_Trump_NorthDakota completed at 2022-07-04 22:28:39.257395
+> (0:16:09.577685) reducing noise in test completed at 2022-07-04 22:28:39.257488
+> (2:30:06.653550) reducing noise completed at 2022-07-04 22:28:39.257522

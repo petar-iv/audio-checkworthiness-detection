@@ -1,0 +1,10 @@
+df.groupby(['speaker']).size().sort_values()
+
+Jim Justice       1
+Kevin Cramer      1
+Lester Holt       3
+Steve Doocy       3
+Question          5
+Donald Trump    278
+
+Trump - 278/291 => 95.5%

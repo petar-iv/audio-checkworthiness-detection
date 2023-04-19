@@ -1,0 +1,21 @@
+{
+  "audio_model": "microsoft/wavlm-base",
+  "audio_df_column": "audio",
+  "audio_max_seq_length": 128000,
+  "text_representation_df_column": "bert",
+  "text_model_path": "/checkworthy-research/audio-checkworthiness-detection/trained-models/text/bert-reduced-train-balanced-1/epoch-4",
+  "train_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/train",
+  "dev_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/dev",
+  "test_data_path": "/checkworthy-research/audio-checkworthiness-detection/data/clef2021/task-1b-english/reduced/v1/data-files/test",
+  "output_dir": "/checkworthy-research/audio-checkworthiness-detection/trained-models/alignment/wavlm",
+  "overwrite_output_dir": false,
+  "train_batch_size": 14,
+  "eval_batch_size": 14,
+  "mixed_precision": true,
+  "learning_rate": 5e-06,
+  "weight_decay": 0.02,
+  "max_grad_norm": 1.0,
+  "num_train_epochs": 8,
+  "seed": 42,
+  "alignment_error_weight": 0.75
+}

@@ -1,0 +1,6 @@
+Checkworthy: 417
+Non-checkworthy: 28298
+Non-checkworthy are 67.86 more than the checkworthy sentences
+Checkworthy: 12927
+Non-checkworthy: 28298
+Non-checkworthy are 2.19 more than the checkworthy sentences

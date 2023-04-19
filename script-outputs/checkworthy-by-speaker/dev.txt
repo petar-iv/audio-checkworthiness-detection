@@ -1,0 +1,6 @@
+df.groupby(['speaker']).size().sort_values()
+
+Pat Robertson     1
+Donald Trump     39
+
+Trump - 39/40 => 97.5%
