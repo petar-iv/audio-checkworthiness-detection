@@ -7,6 +7,7 @@ Neural models using audio or both text and audio are prepared.
 The results show that an audio model could boost the performance of a powerful textual one when combined.
 
 The research was held at Sofia University (Bulgaria), [Faculty of Mathematics and Informatics](https://www.fmi.uni-sofia.bg/en).
+Paper available at https://arxiv.org/pdf/2306.05535.pdf.
 
 ## Short Description of the Project
 
