@@ -10,7 +10,7 @@ The research was held at Sofia University (Bulgaria), [Faculty of Mathematics an
 
 ## Paper
 
-Paper describing this work can be found:
+Paper describing this work can be found at:
 
 - https://ieeexplore.ieee.org/document/10447064 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)
 - https://arxiv.org/pdf/2306.05535.pdf
